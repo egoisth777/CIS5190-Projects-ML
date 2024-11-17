@@ -1,0 +1,436 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage[noabbrev]{cleveref}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\graphicspath{{./images}}
+
+\oddsidemargin 0in
+\evensidemargin 0in
+\textwidth 6.5in
+\topmargin -0.5in
+\textheight 9.0in
+
+% Define custom block environment ()
+
+\tcbset{
+    myblock/.style={
+        colback=blue!5!white, % Background color
+        colframe=blue!75!black, % Border color
+        width=\textwidth, % Width of the block
+        boxrule=0.5mm, % Thickness of the frame
+        halign=left, % Horizontal alignment
+        fonttitle=\bfseries, % Title formatting
+    }
+}
+\newcommand{\ignore}[1]{}
+\def\pp{\par\noindent}
+
+\newcommand{\assignment}[4]{
+\thispagestyle{plain}
+\newpage
+\setcounter{page}{1}
+\noindent
+\begin{center}
+\framebox{ \vbox{ \hbox to 6.28in
+{CIS 419/519: Applied Machine Learning \hfill #1}
+\vspace{4mm}
+\hbox to 6.28in
+{\hspace{2.5in}\large\bf\mbox{Homework #2}}
+\vspace{4mm}
+\hbox to 6.28in
+{{\it Handed Out: #3 \hfill Due: #4}}
+}}
+\end{center}
+}
+
+\makeatletter
+\renewcommand{\fnum@algorithm}{\fname@algorithm}
+\makeatother
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt,frame=bottomline}
+
+
+\begin{document}
+
+\assignment{Fall 2024}{2}{October 2}{7:59 pm October 22}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+
+{\bf Name: }  Yueyang Li\\
+
+{\bf PennKey:} ezel22\\
+
+{\bf PennID:} 47700221 
+
+\section{Declaration}
+\begin{itemize}
+\item \textbf{Person(s) discussed with:} \textit{None}
+\item \textbf{Affiliation to the course: student, TA, prof etc.} \textit{None}
+\item \textbf{Which question(s) in coding / written HW did you discuss?} \textbf{\textit{None}}
+\item \textbf{Briefly explain what was discussed.} \textit{None}
+\end{itemize}
+
+\section{Quesiton 1}
+\subsection{Q1a}
+
+\begin{tcolorbox}[myblock, title = Answer]
+\begin{center}
+\includegraphics[scale=0.5]{q1a.drawio.png}
+\end{center}
+There are roughly \(1\) point that has been mis-classified
+\end{tcolorbox}
+
+\newpage
+\subsection{Q1b}
+\begin{tcolorbox}[myblock, title = Answer]
+  \begin{center}
+    \includegraphics[scale = 0.5]{q1b.drawio.png}
+  \end{center}
+  two points are mis-classified
+\end{tcolorbox}
+
+\newpage
+\subsection{Q1c}
+\begin{tcolorbox}[myblock, title = Answer]
+  \begin{center}
+    \includegraphics[scale = 0.5]{q1c.drawio.png}
+  \end{center}
+  There are no points that are mis-classified. 
+\end{tcolorbox}
+
+\newpage
+\subsection{Q1d}
+\begin{tcolorbox}[myblock, title = Answer]
+  \begin{center}
+    \includegraphics[scale = 0.5]{q1d.drawio.png}
+  \end{center}
+  There are two points that are mis-classified
+\end{tcolorbox}
+
+\newpage
+\section{Question 2}
+\subsection{Q2a}
+\begin{tcolorbox}[myblock, title = Answer]
+\begin{center}
+\includegraphics[scale = 0.5]{q2a.drawio.png}
+\end{center}
+In this graph, the red line represents the decision boundary. 
+Since this Training set contains only $2$ points and $K = 1$, we just need to find the line that has equal distance to point yellow and point blue. 
+It turns out that the boundary that suffices the condition is called perpendicular bisector in mathematics as shown in the graph. 
+\end{tcolorbox}
+
+\newpage
+\subsection{Q2b}
+\begin{tcolorbox}[myblock, title = Answer]
+  The answer is yes. With infinite points, we can achieve whichever decision boundary we want as the data point placement strategy as below:\\
+If you have an infinite number of training points, you can place them very densely around the boundary of any shape or form.
+Place an infinite number of training points on both sides of the boundary. \\
+Ensure that points very close to the boundary, but on either side, are labeled according to the region they belong to.
+By this, it will be ensured that the any shape of the boundary can be determined.
+\end{tcolorbox}
+
+\newpage
+\subsection{Q2c}
+\begin{tcolorbox}[myblock, title = Answer]
+  When $k\to \infty$ the model family will become a constant function that predicts the label of the data to be of the majority class in the dataset, meaning that for any class that has most datum in the dataset, this model will predict the new point to be of that class.
+\end{tcolorbox}
+
+\newpage
+\subsection{Q2d }
+\begin{tcolorbox}[myblock, title = Answer]
+  In (b), we know that when $k = 1$ , the model will be extremely flexible to represent any decision boundary, meaning that it has high variance and might be overfitting. In (c), we know that when $k \to \infty$ , the model will become a constant output, assigning labels to data to majority class of the dataset, which means that the model is highly biased. \\
+From the above effect, we can reach, loosely on the conclusion that \\
+when the number of $k$ increase, the bias will increase and variance will decrease.
+\end{tcolorbox}
+
+
+\newpage
+\subsection{Q2e }
+\begin{tcolorbox}[myblock, title = Answer]
+  To tune the decision threshold in k-NN for binary classification, you can adjust how many neighbors need to vote for class 1 (positive) to classify the test point as class 1. Here's how:\\h
+- Default (majority vote): If more than \(50 \%\) of the \(k\) nearest neighbors vote for class 1 , the point is classified as class 1.\\
+- Lower the threshold (< 50\%): Classify as class 1 if fewer than \(50 \%\) of neighbors vote for class 1. This increases the true positive rate (but may increase false positives).\\
+- Raise the threshold (> 50\%): Classify as class 1 only if more than \(50 \%\) of neighbors vote for class 1. This increases the true negative rate (but may reduce true positives).\\
+
+This adjustment allows you to control the trade-off between false positives and false negatives, similar to logistic regression.
+\end{tcolorbox}
+
+\newpage
+\section{Question 3}
+\subsection{Q3a}
+\begin{tcolorbox}[myblock, title = Answer]
+  Even with post-pruning, there is still a benefit to using early stopping conditions (like limiting tree depth) because:\\
+1. Efficiency: Building very deep trees and then pruning them can be computationally expensive. Early stopping prevents the model from growing too complex in the first place, saving time and resources.\\
+2. Overfitting risk: Deep trees can overfit the training data before pruning, leading to poor splits. Early stopping helps avoid creating splits that don't generalize well.\\
+
+In summary, early stopping helps control tree complexity from the start, while post-pruning fine-tunes the model further. Both techniques can work together to improve efficiency and generalization.\\
+\end{tcolorbox}
+
+
+
+\newpage
+\subsection{Q3b}  
+
+\begin{tcolorbox}[myblock, title = Answer]
+  1. Increase the maximum depth of the decision tree:\\
+  - Effect: Increases variance (as the model becomes more complex and sensitive to the training data).\\
+  - Reason: A deeper tree can overfit the training data, leading to higher variance.\\
+  2. Increase the minimum number of samples needed to split:\\
+  - Effect: Increases bias (since fewer splits are allowed, reducing the model's flexibility).\\
+  - Reason: The tree won't capture fine-grained details, making it underfit the data.\\
+  3. Disable post-pruning:\\
+  - Effect: Increases variance (as the tree can grow too complex).\\
+  - Reason: Without pruning, the tree can overfit, leading to high variance.\\
+  4. Add more features to the feature map:\\
+  - Effect: Increases variance (as the model becomes more complex and has more dimensions to fit).\\
+  - Reason: More features increase the model's flexibility, which can lead to overfitting if not controlled.\\
+  
+  In summary:\\
+  - Increasing depth and adding features increases variance.\\
+  - Increasing the minimum samples to split and disabling postpruning increases bias.\\
+\end{tcolorbox}
+
+\newpage
+\section{Question 4}
+\subsection{Q4a}
+\begin{tcolorbox}[myblock, title = Answer]
+  \begin{align*}
+    H(Z) &= -0.25 \cdot \log_{2}(0.25) - 0.75 \cdot \log_{2}(0.75)\\ 
+     & \approx 0.81
+    \end{align*}
+\end{tcolorbox}
+
+\newpage
+\subsection{q4b}
+\begin{tcolorbox}[myblock, title = answer]
+  for \(a_1\) based on the decision tree graph below:
+  \begin{center}
+    \includegraphics[scale = 0.5]{rootnode.png}
+  \end{center}
+  
+  calculate the ig for \(a_1\), we have\\
+  the entropy of the left leaf can be calculated by
+  $$
+  -(1 \cdot \log_{2}1) - (0 \cdot \log_{2}0) = 0
+  $$
+
+  the entropy of the right leaf can be calculated by
+  $$
+  -\left( \frac{1}{2} \cdot  \log_{2}\left( \frac{1}{2} \right) \right) - \left( \frac{1}{2}\cdot \log_{2}\left( \frac{1}{2} \right) \right) = 1
+  $$
+  calculate the weighted sum of entropy
+  $$
+  \frac{1}{2} \cdot 0 + \frac{1}{2} \cdot 1 = \frac{1}{2}
+  $$
+  thus the ig
+  $$
+  ig = 0.81 - 0.5 = 0.31
+  $$
+  similarly, let's consider use $a_{2}$ as the root, the information gain can be calculated as
+  $$
+  \frac{3}{4}\cdot\left( -\frac{1}{3}\log_{2}\left( \frac{1}{3} \right) - \frac{2}{3}\log_{2}\left( \frac{2}{3} \right)\right) + \frac{1}{4} \cdot 0 = 0.689
+  $$
+  therefore, the information gain can be calculated as $0.81 - 0.689 =  0.121$ \\
+  
+   
+\end{tcolorbox}
+
+\newpage
+\subsection{q4c}
+\begin{tcolorbox}[myblock, title = answer]
+  similarly, let's consider use $a_{2}$ as the root, the information gain can be calculated as
+  $$
+  \frac{3}{4}\cdot\left( -\frac{1}{3}\log_{2}\left( \frac{1}{3} \right) - \frac{2}{3}\log_{2}\left( \frac{2}{3} \right)\right) + \frac{1}{4} \cdot 0 = 0.689
+  $$
+  therefore, the information gain can be calculated as $0.81 - 0.689 =  0.121$ \\
+  thus, we should choose $a_{1}$ as the root of the tree. \\
+  therefore, the final decision tree will look something like this:
+  \begin{center}
+    \includegraphics[scale = 0.5]{decisiontree.drawio.png}
+  \end{center} 
+  Since \(a_1\) provides higher IG than \(a_2\), splitting branch from \(a_1\) will be more efficient by reducing the complexity.
+\end{tcolorbox}
+
+\newpage
+\section{q5}
+\subsection{q5a}
+\begin{tcolorbox}[myblock, title = answer]
+  the assumption of this model is that houses with similar square footage and number of bedrooms will have similar prices. in other words, the algorithm assumes that the price of a house (whether it is more or less than \$500,000) can be predicted based on the prices of the "nearest" houses, where "nearest" is determined by the proximity of the two features: square footage and the number of bedrooms.
+\end{tcolorbox}
+
+\newpage
+\subsection{q5b}
+\begin{tcolorbox}[myblock, title = answer]
+  issue:\\
+  euclidean distance might be a bad metric of similarity/dissimilarity between houses in this case because **square footage and number of bedrooms are on different scales**. for example, square footage can be in the thousands, while the number of bedrooms is a much smaller value (typically between $\left[ 0, 10 \right]$). as a result, the feature square footage will dominate the calculation of euclidean distance and thus making our criterion strongly biased. \\
+  
+  solution: \\
+  to solve this problem, we can apply normalization of the datum. we can normalize both features (min-max normalization) to convert the data to the same scale.\\
+\end{tcolorbox}
+
+\newpage
+\subsection{q5c}
+\begin{tcolorbox}[myblock, title = answer]
+  **categorical features** such as roof type, even though they are represented as integers (0 for shingles, 1 for padded, etc.), **do not have a meaningful numerical relationship**. the difference between 0 (shingles) and 1 (padded) is not necessarily "one unit apart" in the same way that a difference of one unit in square footage or the number of bedrooms is meaningful. this would distort the euclidean distance calculation because the distance between different roof types may not have a real-world interpretation in terms of house similarity.
+\end{tcolorbox}
+
+\newpage
+\subsection{q5d}
+\begin{tcolorbox}[myblock, title = answer]
+  time for calculating $1$ point \\
+  time to calculate the distances between this point to all $n$ points: $o(n)$ \\
+  need to calculate the distance in a $d$ dimensional space, this will take $o(d)$ time if taking euclidean distance\\
+  since is the $1$ nearest point problem, after calculating the distance between this point to all other points, will take $o(n)$ time to compare and get the nearest distances\\
+  
+  since the above algorithm is looped for $n$ times, the final time complexity is $n \cdot (o(n) + o(nd)) = o(n^{2}d)$ \\
+  If the question is asking for a single point, then the time complexity will be \(O(nd)\)
+\end{tcolorbox}
+
+\newpage
+\subsection{q5e}
+\begin{tcolorbox}[myblock, title = answer]
+  The \textbf{curse of dimensionality} refers to the phenomenon where, as the number of features (dimensions) in a dataset increases, the volume of the feature space increases exponentially, causing increased sparsity between data points, distances between data points become similar, and increasing time complexity when $d$ grows.\\
+
+  KNN performs well in some high dim problems mainly due to the below two reason:\\
+  1. inherent structure: Although the raw feature space (pixel values in the case of images) is high-dimensional, the actual data may lie on a **lower-dimensional manifold**. For instance, handwritten digits have patterns and structures (such as shapes and curves) that reduce the effective dimensionality of the data, making meaningful comparisons possible.\\
+  2. **Localized variation**: In datasets like the handwritten digits, variations within each class (digits like '0' or '1') are often limited to small regions of the high-dimensional space. This means that nearest neighbors are still meaningful because points representing the same digit are likely close to each other, even in high dimensions.\\
+\end{tcolorbox}
+
+
+\newpage
+\section{Question 6}
+\subsection{q6a}
+\begin{tcolorbox}[myblock, title = answer]
+  False:\\
+1. Overfitting, too many iterations will cause the validation loss to increase \\
+2. Non-convexity of loss surface, validation loss might not continuously decrease due to saddle point or local minima
+\end{tcolorbox}
+
+\newpage
+\subsection{q6b}
+\begin{tcolorbox}[myblock, title = answer]
+  \textbf{Answer: Anywhere in between the above two choices} \\
+  A fully-connected neural network with sufficient depth and non-linear activations (like the logistic activation used here) can learn any decision boundary that the network ggg with the extra linear layer can learn. In other words, adding an extra linear layer doesn't add more expressive power to the network, because multiple consecutive linear layers can be collapsed into a single linear transformation.\\
+\end{tcolorbox}
+
+\newpage
+\subsection{q6c}
+\begin{tcolorbox}[myblock, title = answer]
+   The Answer should be \( K^{2} \)
+\end{tcolorbox}
+
+\newpage
+\subsection{q6d}
+\begin{tcolorbox}[myblock, title = answer]
+  True \\
+  Since the additional layer can just be represented as a Linear transformation, which doesn't increase the expressive power of the model. 
+\end{tcolorbox}
+
+\newpage
+\subsection{q6d}
+\begin{tcolorbox}[myblock, title = answer]
+  True \\
+  Since the additional layer can just be represented as a Linear transformation, which doesn't increase the expressive power of the model. 
+
+  
+\end{tcolorbox}
+
+
+
+
+
+\newpage
+\section{Python Programming Questions}
+% Complete questions in your iPython notebook and place all results here.
+\subsection{Coding 1.2}
+
+\begin{center}
+  \includegraphics[scale=0.5]{cost_function_visualization_logistic.png}
+\end{center}
+
+Based on the plot, we can conclude the following:\\
+1. Learning rate 0.001 (Blue curve): Convergence is very slow due to the low learning rate.\\
+2. Learning rate 0.01 (Orange curve): Fast and stable convergence, making it a suitable learning rate for this problem.\\
+3. Learning rate 0.1 (Green curve): Fast convergence with no oscillations or divergence, indicating it is the best overall learning rate.\\
+4. Learning rate 0.25 (Red curve): Causes oscillations due to being too high.\\
+
+Conclusion: A learning rate of 0.1 is optimal for this problem."
+
+\subsection{Coding 2.3}
+\begin{center}
+  \includegraphics[scale=0.5]{knn.png}
+\end{center}
+
+\begin{center}
+  \includegraphics[scale=0.5]{knn2.png}
+\end{center}
+
+\begin{center}
+  \includegraphics[scale=0.5]{knn3.png}
+\end{center}
+
+\begin{center}
+  \includegraphics[scale=0.5]{knn4.png}
+\end{center}
+"At low \(k\) values, such as \(k=1\) and \(k=4\), the decision boundary becomes highly irregular and complex, indicating overfitting as the model attempts to capture every detail, including noise. In contrast, at higher \(k\) values, such as \(k=11\) and \(k=15\), the decision boundary becomes smoother and more generalized, reflecting underfitting as the model captures broader patterns but may miss finer details.\\
+
+In summary, a small \(k\) value leads to overfitting by relying on too few neighbors, while a larger \(k\) value results in underfitting with lower variance but higher bias."\\
+\subsection{Coding 3.12}
+\begin{center}
+  \includegraphics[scale=0.5]{gini_vs_cross_entrop.png}
+\end{center}
+"Both Gini Index and Cross-Entropy peak at \(p=0.5\), representing maximum impurity when classes are equally mixed. At the extremes of \(p=0\) and \(p=1\) (perfect purity), both measures drop to zero. Cross-Entropy is more sensitive to small changes in probabilities, providing higher precision but at a greater computational cost. In contrast, the Gini Index is simpler and faster to compute. Both methods are effective for assessing the quality of splits in classification tasks." 
+
+\subsection{Coding 4.5}
+\begin{center}
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c}
+    \hline
+    \textbf{S.No.} & \textbf{Feature} & \textbf{Best CCP Alpha} & \textbf{F1 Score} & \textbf{Confi-Interval}\\
+    \hline
+    1 & Set 1 & 0.000134 & 0.324391 & [0.2613, 0.3875] \\
+    \hline
+    2 & Set 2& 0.0.000229 & 0.329331 &  [0.2160, 0.4427]\\
+    \hline
+    3 & Set 3& 0.000123 & 0.328147 & [0.2638, 0.3924]\\
+    \hline
+    \end{tabular}
+    \caption{Sample Table}
+    \label{tab:sample_table}
+    \end{table}
+\end{center}
+    "Set 1 is the original dataset, Set 2 is the original dataset with the added features 'OHQ575Q' and 'BPAARM', and Set 3 includes the original dataset with 'OHQ565' and 'LBDSGBSI'. I selected Set 2 as the best because it achieved the highest mean cross-validation F1 score (0.329331). This indicates that the additional features 'OHQ575Q' and 'BPAARM' significantly enhanced the model's performance, increasing its predictive accuracy despite having a wider confidence interval."
+\subsection{Coding 6.3}
+\begin{tcolorbox}[myblock, title = Answer]
+ I think Neural Network has the best performance on the dataset. Using \(F_1\) score, \(\text{accuracy}_\text{score}\) and 
+ \(\text{ROC}_\text{AUC}\) to analyze the models. The Neural Networkm achieved the highest performance with \(F_1\) around 0.3524, 
+ Accuracy aroundn \(0.926 \) and AUC around \(0.925 \).
+
+ The reason behind this is as follows:
+
+ 1. Neural Networks are extremely efficient in capturing highly complicated relationship,  meaning that for non-linear data, such as the relationship between the 13 features and DIABETICS (age, height, gender ... forms extremely complicated dimensions), Neural Networks is in its nature working pretty well. \\
+ 2. Neural Networks is also extremely efficient in scaled dataset, meaning that it gains advanture when the size of the dataset is extremely large. Therefore, for the samples in the realm of DIABETICS research, it is highly efficient and fit pretty well. \\
+ 3. Neural Networks benefits from their ability to optimize multiple layers of tranformations, which helps in achieving higher predictive performance. \\
+ 
+\end{tcolorbox}
+\end{document}
