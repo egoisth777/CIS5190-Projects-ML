@@ -315,20 +315,21 @@ Q[(G), A] &= 0
 $$
 
 \end{tcolorbox}
-\item Ans
-    \begin{tcolorbox}
-        Further training won't solve the problem because of the reason as listed:
-        \begin{itemize}
-            \item The Robot receives \(+1\) rewards regardless of the step taken, there's no penalty for inefficiency, so there's no additional incentive / reward for robot to optimize the path.
-            \item The robot will get stuck in a locally optimal policy that solves the maze but does not explore shorter routes. Training will reinforce the current policy.
-        \end{itemize}
-        Suggest fix to this problem are:
-        \begin{itemize}
-            \item Have Negative feedback(penalty) for every step it takes, encouraging the agent to find the shortest path.
-            \item include discount factor \(\gamma < 1\) os that future rewards are worth less than immediate rewards, this will result in higher total rewards because \(\gamma^T\) decreaeses over the steps taken
-        \end{itemize}
-    \end{tcolorbox}
+
 \end{enumerate}
+\item Ans
+\begin{tcolorbox}
+    Further training won't solve the problem because of the reason as listed:
+    \begin{itemize}
+        \item The Robot receives \(+1\) rewards regardless of the step taken, there's no penalty for inefficiency, so there's no additional incentive / reward for robot to optimize the path.
+        \item The robot will get stuck in a locally optimal policy that solves the maze but does not explore shorter routes. Training will reinforce the current policy.
+    \end{itemize}
+    Suggest fix to this problem are:
+    \begin{itemize}
+        \item Have Negative feedback(penalty) for every step it takes, encouraging the agent to find the shortest path.
+        \item include discount factor \(\gamma < 1\) os that future rewards are worth less than immediate rewards, this will result in higher total rewards because \(\gamma^T\) decreaeses over the steps taken
+    \end{itemize}
+\end{tcolorbox}
 \item Programming Assignment
 \begin{enumerate}
     \item 2.7
@@ -353,8 +354,4 @@ $$
     Decision Tree Agent (Behavioral Cloning): The Decision Tree agent, trained on Q-learning’s data, achieves high success rates early but lacks adaptability. Its final positions vary significantly, reflecting its inability to handle novel states or refine its policy, often resulting in inefficient and unstable paths to the goal.
 \end{enumerate}
 \end{enumerate}
-
-
-
-
 \end{document}
