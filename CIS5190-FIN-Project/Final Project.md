@@ -9,7 +9,7 @@
 - Maximum photo size = $2000$
 - Use hugging face to submit data and model weights
 - Leaderboard ranking keeps the process of other groups
-Token:
+- Token:(Daniel's)
 ```
 hf_OIoPaihGsJtqpLSMPLEiMKOhWAErLLBXkCy
 ```
