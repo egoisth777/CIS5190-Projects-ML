@@ -19,3 +19,10 @@ hf_OIoPaihGsJtqpLSMPLEiMKOhWAErLLBXkCy
 ```
 
 [[CIS5810 Final Project Instructionss|CIS5810 Final Project Instructionss]]
+
+# Dataset Current Status
+- Train: 1240
+- Test: 264
+- Val: 264
+**Total = 1768**
+
