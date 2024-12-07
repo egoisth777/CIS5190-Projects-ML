@@ -14,15 +14,21 @@
 - Use hugging face to submit data and model weights
 - Leaderboard ranking keeps the process of other groups
 - Token:(Daniel's)
-```
+```shell
 hf_OIoPaihGsJtqpLSMPLEiMKOhWAErLLBXkCy
 ```
-
+- Token:(Aeon's)
+``` title:token
+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
+```
 [[CIS5810 Final Project Instructionss|CIS5810 Final Project Instructionss]]
 
 # Dataset Current Status
-- Train: 1240
-- Test: 264
-- Val: 264
-**Total = 1768**
+- Train: 1352
+- Test: 288
+- Val: 288
+**Total = 1928**
 
+# Submission and Leaderboard
+- [Weekly Leaderboard submission ranking](https://docs.google.com/spreadsheets/d/18wT6fntA73e_N9Q9i9VutGEdZS6yIL06HAM1BfQj8Rk/edit?gid=1136231671#gid=1136231671)
+- [Submission Instructions](https://static.us.edusercontent.com/files/0UhtgqpaUUcDIisWU98x45BK) 
